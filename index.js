@@ -37,7 +37,12 @@ app.use(mainStaic)
 app.use(koaBody({
     multipart: true,
     formidable: {
-        uploadDir: STATIC_FILE_URL  // 设置上传文件存放的位置
+        uploadDir: STATIC_FILE_URL,  // 设置上传文件存放的位置
+        // filename:  function(name,ext,part,form) {
+        //     return `${name}.${ext}`
+        // }
+
+
     }
 }))
 // koa-router接管路由
