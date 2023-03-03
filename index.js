@@ -8,6 +8,9 @@ const KoaCors = require('@koa/cors')
 
 const {router} = require('./src/router/index')
 
+// self middleware
+const {jwtMiddle} = require('./src/middleware/koa-jwt')
+
 
 const STATIC_FILE_URL = path.join(__dirname,'./static')
 const DOWNLOAD_URL = 'http://localhost:3000/download'
@@ -23,17 +26,21 @@ const middleStaic = KoaStatic('./static', {
     }
 })
 
+app.use(jwtMiddle)
+
+
 // 网站
-const mainStaic = KoaStatic('./website')
+const mainSite = KoaStatic('./website')
 
 
 
 // 跨域问题
 app.use(KoaCors())
 
+
 // 1.开发一个静态文件服务器
 app.use(KoaMount('/download', middleStaic))
-app.use(mainStaic)
+app.use(mainSite)
 app.use(koaBody({
     multipart: true,
     formidable: {
