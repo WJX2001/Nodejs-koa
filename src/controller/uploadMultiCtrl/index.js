@@ -14,4 +14,4 @@ function uploadMultiCtrl(ctx) {
     
 }
 
-module.exports = uploadMultiCtrl
+module.exports = uploadMultiCtrl 
