@@ -10,7 +10,7 @@ function fail(msg,statusCode) {
     return {
         success:false,
         msg,
-        statusCode: -1,
+        statusCode: statusCode,
     }
 }
 

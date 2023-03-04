@@ -9,7 +9,7 @@ const KoaCors = require('@koa/cors')
 const {router} = require('./src/router/index')
 
 // self middleware
-const {jwtMiddle} = require('./src/middleware/koa-jwt')
+const jwtMiddle = require('./src/middleware/koa-jwt')
 
 
 const STATIC_FILE_URL = path.join(__dirname,'./static')
