@@ -10,14 +10,14 @@ const WhiteList = [
 
 async function jwtMiddle(ctx, next) {
     const url = ctx.request.url.split('?')[0]
-    if (WhiteList.includes(url)) {
+    if (WhiteList.includes(url) || ctx.request.method.toLowerCase() === 'options') {
         await next();
     } else {
         // TODO: 验证token是否合法
         if (verifyToken(ctx.request.header.token)) {
             await next();
         } else {
-            ctx.body = fail('token失效，请重新获取')
+            ctx.body = fail('token失效,请重新获取')
         }
     }
     // TODO: 逻辑
